@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std ;
+
+bool isComment(string str)
+{
+    if(str.length() >= 2 && str[0] == '/' && str[1] == '/')return true;
+
+    else if (str.length() >= 4 && str[0] == '/' && str[1] == '*'){
+        for(int i = 2 ; i < str.length() - 1 ;i++)
+        {
+            if(str[i] == '*' && str[i+1] == '/')
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+int main ()
+{
+    string comment ;
+    cout << "Enter Comment : ";
+    cin >> comment;
+
+    if(isComment(comment))
+    {
+        cout << "It is single line Comment" ;
+    }
+    else{
+        cout << "It is Multiple line Comment";
+    }
+}

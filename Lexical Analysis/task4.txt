@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+bool isAlpha(char ch)
+{
+    return ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'));
+}
+
+bool isAlphaNumUnder(char ch)
+{
+    return (isAlpha(ch) || (ch >= '0' && ch <= '9') || ch == '_');
+}
+
+bool validIdentity(string str)
+{
+    if (!(isAlpha(str[0]) || str[0] == '_')) return false;
+
+    for (int i = 0; i < str.size(); i++)
+    {
+        if (!isAlphaNumUnder(str[i])) return false;
+    }
+    return true;
+}
+
+int main()
+{
+    string input;
+    cout << "Enter Identifier: ";
+    cin >> input;
+
+    if (validIdentity(input))
+    {
+        cout << "Valid Identifier";
+    }
+    else
+    {
+        cout << "Invalid Identifier";
+    }
+
+    return 0;
+}
+
+
