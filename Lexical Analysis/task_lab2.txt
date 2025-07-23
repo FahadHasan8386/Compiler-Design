@@ -1,0 +1,155 @@
+
+
+task1
+
+#include<iostream>
+using namespace std ;
+
+bool isNumberConstant(string str)
+{
+    if(str.empty())return false;
+
+    for(int i = 0 ; i < str.size() ;i++)
+    {
+
+        if(str[i] < '0' || str[i] > '9')
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main ()
+{
+    string input ;
+    cout << "Enter Input : ";
+    cin >> input;
+
+    if(isNumberConstant(input))
+    {
+        cout << "Is a Num " << endl;
+    }
+    else
+    {
+        cout << "Is not a num " << endl;
+    }
+}
+
+
+
+
+task2
+
+#include <iostream>
+using namespace std;
+
+bool isOperator(char ch)
+{
+    return (ch == '+' || ch == '-' || ch  == '*' || ch == '/' || ch == '=' || ch == '%');
+}
+
+int main ()
+{
+    string input ;
+    cout << "Enter Expression : ";
+    cin >> input;
+
+
+    for( int i = 0 ; i < input[i] ;i++)
+    {
+        if(isOperator(input[i]))
+        {
+            cout << "Operator : " << input[i] << endl;
+        }
+    }
+}
+
+
+
+
+task3
+
+#include<iostream>
+using namespace std ;
+
+bool isComment(string str)
+{
+    if(str.length() >= 2 && str[0] == '/' && str[1] == '/')return true;
+
+    else if (str.length() >= 4 && str[0] == '/' && str[1] == '*'){
+        for(int i = 2 ; i < str.length() - 1 ;i++)
+        {
+            if(str[i] == '*' && str[i+1] == '/')
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+int main ()
+{
+    string comment ;
+    cout << "Enter Comment : ";
+    cin >> comment;
+
+    if(isComment(comment))
+    {
+        cout << "It is single line Comment" ;
+    }
+    else{
+        cout << "It is Multiple line Comment";
+    }
+}
+
+
+
+
+task4
+
+#include <iostream>
+using namespace std;
+
+bool isAlpha(char ch)
+{
+    return ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'));
+}
+
+bool isAlphaNumUnder(char ch)
+{
+    return (isAlpha(ch) || (ch >= '0' && ch <= '9') || ch == '_');
+}
+
+bool validIdentity(string str)
+{
+    if (!(isAlpha(str[0]) || str[0] == '_')) return false;
+
+    for (int i = 0; i < str.size(); i++)
+    {
+        if (!isAlphaNumUnder(str[i])) return false;
+    }
+    return true;
+}
+
+int main()
+{
+    string input;
+    cout << "Enter Identifier: ";
+    cin >> input;
+
+    if (validIdentity(input))
+    {
+        cout << "Valid Identifier";
+    }
+    else
+    {
+        cout << "Invalid Identifier";
+    }
+
+    return 0;
+}
+
+
+
