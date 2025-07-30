@@ -28,18 +28,18 @@ int main ()
 
     if(isNumberConstant(input))
     {
-        cout << "Is a Num " << endl;
+        cout << "Numeric Constant " << endl;
     }
     else
     {
-        cout << "Is not a num " << endl;
+        cout << "Not Numeric" << endl;
     }
 }
 
 
 
-
 task2
+
 
 #include <iostream>
 using namespace std;
@@ -55,12 +55,13 @@ int main ()
     cout << "Enter Expression : ";
     cin >> input;
 
-
+    int cnt = 0;
     for( int i = 0 ; i < input[i] ;i++)
     {
         if(isOperator(input[i]))
         {
-            cout << "Operator : " << input[i] << endl;
+            cnt++;
+            cout << "Operator" << cnt << ": " << input[i] << endl;
         }
     }
 }
@@ -70,6 +71,7 @@ int main ()
 
 task3
 
+
 #include<iostream>
 using namespace std ;
 
@@ -77,8 +79,9 @@ bool isComment(string str)
 {
     if(str.length() >= 2 && str[0] == '/' && str[1] == '/')return true;
 
-    else if (str.length() >= 4 && str[0] == '/' && str[1] == '*'){
-        for(int i = 2 ; i < str.length() - 1 ;i++)
+    else if (str.length() >= 4 && str[0] == '/' && str[1] == '*')
+    {
+        for(int i = 2 ; i < str.length() - 1 ; i++)
         {
             if(str[i] == '*' && str[i+1] == '/')
             {
@@ -93,14 +96,23 @@ int main ()
 {
     string comment ;
     cout << "Enter Comment : ";
-    cin >> comment;
+    getline(cin,comment);
 
     if(isComment(comment))
     {
-        cout << "It is single line Comment" ;
+        if(comment[1] == '/')
+        {
+            cout << "It is single line Comment" ;
+        }
+        else
+        {
+            cout << "It is Multiple line Comment";
+        }
+
     }
-    else{
-        cout << "It is Multiple line Comment";
+    else
+    {
+        cout << "Invalid Comment" << endl;
     }
 }
 
